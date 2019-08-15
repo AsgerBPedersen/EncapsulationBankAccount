@@ -1,0 +1,62 @@
+﻿@page
+@model AccountPage.Pages.transactionsModel
+@{
+    ViewData["Title"] = "transactions";
+}
+
+<h1>transactions</h1>
+<form method="get" class="container border text-left pt-2 mb-3">
+    <div class="form-row form-group">
+        <div class="col">
+            <label asp-for="PageSize">Total number of items</label>
+            <select asp-for="PageSize" asp-items="Model.Sl" class="form-control form-control-sm" onchange="this.form.submit()"></select>
+        </div>
+        
+    </div>
+</form>
+<table class="table-bordered col-6 mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">AccountId</th>
+            <th scope="col">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Transactions)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.AccountId</td>
+                <td>
+                    @item.Amount
+                </td>
+                <td></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <ul class="pagination">
+        @if (Model.CurrentPage != 1)
+        {
+            <li class="page-item">
+                <a asp-page="/transactions" asp-route-currentpage="@(Model.CurrentPage - 1)" asp-route-pagesize="@Model.PageSize" class="page-link">Previous</a>
+            </li>
+        }
+        @if (Model.CurrentPage != Model.TotalPages)
+        {
+            <li class="page-item">
+                <a asp-page="/transactions" asp-route-currentpage="@(Model.CurrentPage + 1)" asp-route-pagesize="@Model.PageSize" class="page-link">Next</a>
+            </li>
+        }
+
+        @*@for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a asp-page="/accounts" asp-route-currentpage="@i" class="page-link">@i</a>
+                </li>
+            }*@
+    </ul>
+</div>

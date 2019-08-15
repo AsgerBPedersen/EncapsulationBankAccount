@@ -1,0 +1,54 @@
+﻿@page
+@model AccountPage.Pages.accountsModel
+@{
+    ViewData["Title"] = "accounts";
+}
+
+<h1>@Model.TotalPages</h1>
+<table class="table-bordered col-6 mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Accounts)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Balance</td>
+                <td>
+                    @item.Created.ToString()
+            </td>
+            <td></td>
+
+        </tr>
+    }
+    </tbody>
+</table>
+<div>
+    <ul class="pagination">
+        @if (Model.CurrentPage != 1)
+        {
+            <li class="page-item">
+                <a asp-page="/accounts" asp-route-currentpage="@(Model.CurrentPage - 1)" class="page-link">Previous</a>
+            </li>
+        }
+        @if (Model.CurrentPage != Model.TotalPages)
+        {
+            <li class="page-item">
+                <a asp-page="/accounts" asp-route-currentpage="@(Model.CurrentPage + 1)" class="page-link">Next</a>
+            </li>
+        }
+
+        @*@for (var i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a asp-page="/accounts" asp-route-currentpage="@i" class="page-link">@i</a>
+            </li>
+        }*@
+    </ul>
+</div>
+

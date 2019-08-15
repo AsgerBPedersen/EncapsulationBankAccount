@@ -1,0 +1,12 @@
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\bin\Debug\netcoreapp2.2\DbAccess.deps.json
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\bin\Debug\netcoreapp2.2\DbAccess.dll
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\obj\Debug\netcoreapp2.2\DbAccess.csprojAssemblyReference.cache
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\obj\Debug\netcoreapp2.2\DbAccess.csproj.CoreCompileInputs.cache
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\obj\Debug\netcoreapp2.2\DbAccess.AssemblyInfoInputs.cache
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\obj\Debug\netcoreapp2.2\DbAccess.AssemblyInfo.cs
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\bin\Debug\netcoreapp2.2\DbAccess.pdb
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\bin\Debug\netcoreapp2.2\Entities.dll
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\bin\Debug\netcoreapp2.2\Entities.pdb
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\obj\Debug\netcoreapp2.2\DbAccess.csproj.CopyComplete
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\obj\Debug\netcoreapp2.2\DbAccess.dll
+C:\Users\asge4899\source\repos\encapsulationS3\DbAccess\obj\Debug\netcoreapp2.2\DbAccess.pdb

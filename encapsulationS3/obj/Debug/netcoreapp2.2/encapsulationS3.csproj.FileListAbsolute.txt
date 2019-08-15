@@ -1,0 +1,16 @@
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\encapsulationS3.deps.json
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\encapsulationS3.runtimeconfig.json
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\encapsulationS3.runtimeconfig.dev.json
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\encapsulationS3.dll
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\encapsulationS3.pdb
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\obj\Debug\netcoreapp2.2\encapsulationS3.csprojAssemblyReference.cache
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\obj\Debug\netcoreapp2.2\encapsulationS3.csproj.CoreCompileInputs.cache
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\obj\Debug\netcoreapp2.2\encapsulationS3.AssemblyInfoInputs.cache
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\obj\Debug\netcoreapp2.2\encapsulationS3.AssemblyInfo.cs
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\obj\Debug\netcoreapp2.2\encapsulationS3.dll
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\obj\Debug\netcoreapp2.2\encapsulationS3.pdb
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\DbAccess.dll
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\Entities.dll
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\DbAccess.pdb
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\bin\Debug\netcoreapp2.2\Entities.pdb
+C:\Users\asge4899\source\repos\encapsulationS3\encapsulationS3\obj\Debug\netcoreapp2.2\encapsulationS3.csproj.CopyComplete
