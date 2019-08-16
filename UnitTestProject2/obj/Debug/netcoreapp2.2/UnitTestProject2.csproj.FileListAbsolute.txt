@@ -15,3 +15,5 @@ C:\Users\asge4899\source\repos\encapsulationS3\UnitTestProject2\obj\Debug\netcor
 C:\Users\asge4899\source\repos\encapsulationS3\UnitTestProject2\obj\Debug\netcoreapp2.2\UnitTestProject2.csproj.CopyComplete
 C:\Users\asge4899\source\repos\encapsulationS3\UnitTestProject2\obj\Debug\netcoreapp2.2\UnitTestProject2.dll
 C:\Users\asge4899\source\repos\encapsulationS3\UnitTestProject2\obj\Debug\netcoreapp2.2\UnitTestProject2.pdb
+C:\Users\asge4899\source\repos\encapsulationS3\UnitTestProject2\bin\Debug\netcoreapp2.2\DbAccess.dll
+C:\Users\asge4899\source\repos\encapsulationS3\UnitTestProject2\bin\Debug\netcoreapp2.2\DbAccess.pdb

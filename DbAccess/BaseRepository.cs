@@ -6,10 +6,10 @@ using System.Text;
 
 namespace DbAccess
 {
-    public abstract class BaseRepository
+    public class BaseRepository : IBaseRepository
     {
-        string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AccountDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        protected DataTable ExecuteQuery(string q)
+        protected string conString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AccountDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public DataTable ExecuteQuery(string q)
         {
             DataTable ds = new DataTable();
 
@@ -23,7 +23,7 @@ namespace DbAccess
             return ds;
         }
 
-        protected int ExecuteNonQuery(string q)
+        public int ExecuteNonQuery(string q)
         {
             int rowsAffected = 0;
             using (SqlConnection con = new SqlConnection(conString))
@@ -38,7 +38,7 @@ namespace DbAccess
             return rowsAffected;
         }
 
-        protected int ExecuteNonQueryScalar(string q)
+        public int ExecuteNonQueryScalar(string q)
         {
             using (SqlConnection con = new SqlConnection(conString))
             using (SqlCommand com = new SqlCommand(q, con))
