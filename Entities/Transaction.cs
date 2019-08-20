@@ -4,23 +4,30 @@ using System.Text;
 
 namespace Entities
 {
-    public class Transaction
+    public class Transaction : Entity
     {
-        private int id;
-        private int accountId;
-        private decimal amount;
+        protected string sender;
+        protected string reciever;
+        protected decimal amount;
+        protected DateTime timestamp;
 
-        public Transaction(decimal amount, int accountId)
+        public Transaction(int id,DateTime timestamp, decimal amount, string reciever, string sender) : base(id)
         {
+            Timestamp = timestamp;
             Amount = amount;
-            AccountId = accountId;
+            Reciever = reciever;
+            Sender = sender;
         }
 
-        public Transaction(decimal amount, int accountId, int id)
+        public Transaction(DateTime timestamp, decimal amount, string reciever, string sender) : this(default, timestamp, amount, reciever, sender)
         {
-            Amount = amount;
-            AccountId = accountId;
-            Id = id;
+            
+        }
+
+        public DateTime Timestamp
+        {
+            get { return timestamp; }
+            set { timestamp = value; }
         }
 
         public decimal Amount
@@ -29,16 +36,39 @@ namespace Entities
             set { amount = value; }
         }
 
-        public int AccountId
+        public string Reciever
         {
-            get { return accountId; }
-            set { accountId = value; }
+            get { return reciever; }
+            set { reciever = value; }
         }
 
-        public int Id
+        public string Sender
         {
-            get { return id; }
-            set { id = value; }
+            get { return sender; }
+            set { sender = value; }
+        }
+
+        public static bool ValidateTimestamp(DateTime timestamp)
+        {
+            if (timestamp > DateTime.Now)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
+
+        public static bool ValidateAmount(decimal amount)
+        {
+            if (amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

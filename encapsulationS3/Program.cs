@@ -2,6 +2,7 @@
 using Entities;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace encapsulationS3
 {
@@ -9,9 +10,9 @@ namespace encapsulationS3
     {
         static void Main(string[] args)
         {
-            TransactionRepository tr = new TransactionRepository();
-            List<Transaction> tas = tr.GetAllTransactions();
-
+            DateTime date1 = DateTime.Parse("31/01/2019");
+            DateTime date2 = DateTime.Now;
+            Console.WriteLine(date2 > date1);
             Console.ReadKey();
         }
     }

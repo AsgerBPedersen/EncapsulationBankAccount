@@ -1,44 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Entities
 {
-    public class Account
+    public class Account : Entity
     {
-        private int id;
-        private decimal balance;
-        private DateTime created;
-
+        protected string accountNumber;
+        protected decimal balance;
+        protected DateTime created;
+        protected decimal creditLimit;
+        protected List<Transaction> transactions;
 
         /// <summary>
-        /// used for initial account creation
+        /// Initializes account with an id
         /// </summary>
-        /// <param name="initialBalance"></param>
-        public Account(decimal initialBalance)
-        {
-            Balance = initialBalance;
-            id = 0;
-            created = DateTime.Now;
-        }
-        /// <summary>
-        /// used when an account is retrieved from the database
-        /// </summary>
-        /// <param name="created"></param>
-        /// <param name="balance"></param>
         /// <param name="id"></param>
-        public Account(DateTime created, decimal balance, int id)
+        /// <param name="accountNumber"></param>
+        /// <param name="balance"></param>
+        /// <param name="created"></param>
+        /// <param name="creditLimit"></param>
+        /// <param name="transactions"></param>
+        public Account(int id, string accountNumber, decimal balance, DateTime created, decimal creditLimit, List<Transaction> transactions) : base(id)
         {
-            Created = created;
+            AccountNumber = accountNumber;
             Balance = balance;
-            Id = id;
+            Created = created;
+            CreditLimit = creditLimit;
+            Transactions = transactions;
         }
+
         /// <summary>
-        /// sets or gets created date
+        /// Initializes account without an id
         /// </summary>
-        public DateTime Created
+        /// <param name="accountNumber"></param>
+        /// <param name="balance"></param>
+        /// <param name="created"></param>
+        /// <param name="creditLimit"></param>
+        /// <param name="transactions"></param>
+        public Account(string accountNumber, decimal balance, DateTime created, decimal creditLimit, List<Transaction> transactions) 
+            :this(default, accountNumber, balance, created, creditLimit, transactions)
         {
-            get { return created; }
-            set { created = value; }
+            
         }
+
+        /// <summary>
+        /// gets or sets the accountnumber
+        /// </summary>
+        public string AccountNumber
+        {
+            get { return accountNumber; }
+            set
+            {
+                if (ValidateAccountNumber(value))
+                {
+                    accountNumber = value;
+                } else
+                {
+                    throw new ArgumentException("wrong account number format");
+                }
+            }
+        }
+
         /// <summary>
         /// gets or sets the balance
         /// </summary>
@@ -55,58 +78,76 @@ namespace Entities
         }
 
         /// <summary>
-        /// gets or sets id
+        /// sets or gets created date
         /// </summary>
-        public int Id
+        public DateTime Created
         {
-            get => id;
-            set
-            {
-                if (value > 0)
-                {
-                    id = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Id must be greater than 0");
+            get { return created; }
+            set {
+                if (ValidateCreatedDate(value)) {
+                    created = value;
+                } else {
+                    throw new ArgumentException("Date can't be in future");
                 }
             }
         }
 
         /// <summary>
+        /// gets or sets creditlimit
+        /// </summary>
+        public decimal CreditLimit
+        {
+            get { return creditLimit; }
+            set {
+                if (ValidateCreditLimit(value))
+                {
+                    creditLimit = value;
+                } else
+                {
+                    throw new ArgumentException("credit limit can't be less than 0");
+                }
+            }
+        }
+        /// <summary>
+        /// gets or set transactions
+        /// </summary>
+        public List<Transaction> Transactions
+        {
+            get { return transactions; }
+            set { transactions = value; }
+        }
+
+
+        /// <summary>
         /// withdraws from the account
         /// </summary>
         /// <param name="amount"></param>
-        public void Withdraw(decimal amount)
+        public virtual void Withdraw(decimal amount)
         {
-            if (amount > 25000 || amount <= 0)
+            if ((CreditLimit + Balance - amount) < 0)
             {
-                throw new ArgumentException("invalid amount");
-            }
-            var (isValid, errorMessage) = ValidateTransfer(0 - amount, balance);
-            if (isValid)
+                throw new ArgumentException("withdraw exceeds credit limit");
+            } else if(amount <= 0)
+            {
+                throw new ArgumentException("only positive numbers");
+            } else
             {
                 Balance -= amount;
-            }
-            else
-            {
-                throw new ArgumentException(errorMessage);
             }
         }
         /// <summary>
         /// deposists into the account
         /// </summary>
         /// <param name="amount"></param>
-        public void Deposit(decimal amount)
+        public virtual void Deposit(decimal amount)
         {
-            var (isValid, errorMessage) = ValidateTransfer(amount, balance);
-            if (isValid)
+            if (amount <= 0)
             {
-                Balance += amount;
+                throw new ArgumentException("only positive numbers");
             }
             else
             {
-                throw new ArgumentException(errorMessage);
+                Balance += amount;
             }
         }
 
@@ -118,25 +159,42 @@ namespace Entities
         {
             return (DateTime.Now - created).Days;
         }
-        /// <summary>
-        /// validates transaction
-        /// </summary>
-        /// <param name="amount"></param>
-        /// <param name="balance"></param>
-        /// <returns></returns>
-        public static (bool isValid, string errorMessage) ValidateTransfer(decimal amount, decimal balance)
-        {
 
-            if (amount + balance < 1000000000 && amount + balance > -1000000000)
+
+
+        public static bool ValidateAccountNumber(string accountNumber)
+        {
+            if (!Regex.Match(accountNumber, @"^[0-9]{4}\s[0-9]{6,15}$").Success)
             {
-                return (true, string.Empty);
+                return false;
             }
             else
             {
-                return (false, "exceeds account limits");
+                return true;
             }
         }
 
+        public static bool ValidateCreatedDate(DateTime createdDate)
+        {
+            if (createdDate > DateTime.Now)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
+        public static bool ValidateCreditLimit(decimal creditLimit)
+        {
+            if(creditLimit < 0)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
     }
 }
